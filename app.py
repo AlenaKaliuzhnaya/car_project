@@ -26,8 +26,6 @@ price_range = st.slider(
     "What is your price range?",
     value=(int(min_price), int(max_price)))
 
-# actual_range=list(range(price_range[0],price_range[1]+1))
-actual_range = list(range(int(price_range[0]), int(price_range[1]) + 1))
 
 filtered_data = data[(data['price'] >= price_range[0]) & (data['price'] <= price_range[1])]
 
@@ -40,8 +38,6 @@ choose_new_car = st.checkbox('Show only new vehicles')
 
 if choose_new_car:
     filtered_data = filtered_data[data.condition == 'new']
-else:
-    filtered_data = data[data.price.isin(actual_range)]
 
 st.write('Here are your options with a split by price, condition  and model of the vehicle')
 
