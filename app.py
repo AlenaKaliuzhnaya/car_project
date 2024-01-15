@@ -6,6 +6,10 @@ import urllib.request
 from PIL import Image
 
 data = pd.read_csv('vehicles_us.csv')
+data = data.drop_duplicates(subset=['model'])
+
+# Resetting the index after removing duplicates
+data = data.reset_index(drop=True)
 
 st.header('Choose your car!')
 st.subheader('Use this app to select vehicle based on your preferences ')
@@ -43,7 +47,7 @@ else:
 
 st.write('Here are your options with a split by price, condition  and model of the vehicle')
 
-fig = px.scatter(filtered_data, x="model", y="price", size="pop", color="condition", hover_name="model", log_x=True,
+fig = px.scatter(filtered_data, x="model", y="price", color="condition", hover_name="model", log_x=True,
                  size_max=60)
 st.plotly_chart(fig)
 
