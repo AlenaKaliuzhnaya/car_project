@@ -51,6 +51,7 @@ st.write('Distribution of vehicles by fuel type')
 filtered_data['price_percentage'] = (filtered_data.groupby('fuel')['price'].transform('sum') / filtered_data['price']
                                      .sum()) * 100
 fig2 = px.bar(filtered_data, x="fuel", y="price_percentage", labels={"price_percentage": "Percent"})
+fig2.update_layout(yaxis_title="Percent", yaxis=dict(tickvals=list(range(0, 101, 10))))
 st.plotly_chart(fig2)
 
 st.write('Here are your options with a split by price, condition and model')
