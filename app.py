@@ -17,7 +17,7 @@ img = Image.open("machineswithsouls.jpg")
 
 st.image(img)
 
-st.caption(':red[Choose your parameters here]')
+st.caption('Choose your parameters here')
 min_price = int(data['price'].min())
 max_price = int(data['price'].max())
 
@@ -34,7 +34,7 @@ choose_new_car = st.checkbox('Show only new vehicles')
 if choose_new_car:
     filtered_data = filtered_data[data.condition == 'new']
 
-st.write('Model year VS price and condition\n Here you can choose vehicle condition based on model year and price')
+st.write('Here you can choose vehicle condition based on model year and price')
 
 fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", hover_name="model",
                  log_x=True, size='price')
@@ -42,6 +42,7 @@ st.plotly_chart(fig, theme="streamlit")
 
 st.write('Distribution of vehicles by fuel type')
 fig2 = px.histogram(filtered_data, x="fuel")
+avg_price = filtered_data['fuel'].mean()
 st.plotly_chart(fig2)
 
 total_count_per_fuel = filtered_data['fuel'].value_counts()
