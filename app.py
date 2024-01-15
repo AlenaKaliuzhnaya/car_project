@@ -1,8 +1,7 @@
-import pandas as pd
-import streamlit as st
-import plotly.express as px
-import altair as alt
 import urllib.request
+import pandas as pd
+import plotly.express as px
+import streamlit as st
 from PIL import Image
 
 data = pd.read_csv('vehicles_us.csv')
@@ -19,14 +18,14 @@ img = Image.open("machineswithsouls.jpg")
 st.image(img)
 
 st.caption(':red[Choose your parameters here]')
-min_price = data['price'].min()
-max_price = data['price'].max()
+min_price = int(data['price'].min())
+max_price = int(data['price'].max())
 
 price_range = st.slider(
     "What is your price range?",
-    min_value=int(min_price),
-    max_value=int(max_price),
-    value=(int(min_price), int(max_price)))
+    min_value=min_price,
+    max_value=max_price,
+    value=(min_price, max_price))
 
 
 filtered_data = data[(data['price'] >= price_range[0]) & (data['price'] <= price_range[1])]
@@ -52,6 +51,7 @@ st.write('Distribution of vehicles by fuel type')
 filtered_data['price_percentage'] = (filtered_data.groupby('fuel')['price'].transform('sum') / filtered_data['price']
                                      .sum()) * 100
 fig2 = px.bar(filtered_data, x="fuel", y="price_percentage", labels={"price_percentage": "Percent"})
+fig2.update_layout(yaxis=dict(tickformat="%"))
 st.plotly_chart(fig2)
 
 st.write('Here are your options with a split by price, condition and model')
