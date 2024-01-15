@@ -27,10 +27,7 @@ price_range = st.slider(
     max_value=max_price,
     value=(min_price, max_price))
 
-
 filtered_data = data[(data['price'] >= price_range[0]) & (data['price'] <= price_range[1])]
-
-
 
 choose_new_car = st.checkbox('Show only new vehicles')
 
@@ -43,7 +40,6 @@ fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", ho
                  log_x=True, size='price')
 st.plotly_chart(fig, theme="streamlit")
 
-
 st.write('Distribution of vehicles by fuel type')
 
 total_count_per_fuel = filtered_data['fuel'].value_counts()
@@ -51,10 +47,11 @@ total_count_per_fuel = filtered_data['fuel'].value_counts()
 filtered_data['count_percentage'] = (filtered_data.groupby('fuel')['fuel'].transform('count') / filtered_data['fuel']
                                      .count()) * 100
 
-fig2 = px.bar(filtered_data, x="fuel", y="count_percentage", labels={"count_percentage": "Percent"})
-# Convert y-axis values to percentage format
-fig2.update_traces(yaxis="y2")
-fig2.update_layout(yaxis2_tickformat="%", yaxis2=dict(title="Percent"))
+model_counts = filtered_data['model'].value_counts(normalize=True) * 100
+
+# Create a bar chart using Plotly Express
+fig2 = px.bar(x=model_counts.index, y=model_counts.values, labels={'x': 'Car Model', 'y': 'Percentage of Count'},
+              title='Distribution of Car Models')
 
 st.plotly_chart(fig2)
 
