@@ -29,17 +29,15 @@ actual_range = list(range(int(price_range[0]), int(price_range[1]) + 1))
 
 filtered_data = data[(data['price'] >= price_range[0]) & (data['price'] <= price_range[1])]
 
-car_models = st.multiselect(
-    'Choose models of vehicle that you prefer',
-    options=filtered_data['model'])
+# car_models = st.multiselect(
+#     'Choose models of vehicle that you prefer',
+#     options=filtered_data['model'])
 
 
 choose_new_car = st.checkbox('Show only new vehicles')
 
 if choose_new_car:
-    filtered_data = data[data.price.isin(actual_range)]
     filtered_data = filtered_data[data.condition == 'new']
-    filtered_data = filtered_data[data.car_models]
 else:
     filtered_data = data[data.price.isin(actual_range)]
 
