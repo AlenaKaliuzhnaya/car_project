@@ -24,6 +24,8 @@ max_price = data['price'].max()
 
 price_range = st.slider(
     "What is your price range?",
+    min_value=int(min_price),
+    max_value=int(max_price),
     value=(int(min_price), int(max_price)))
 
 
@@ -42,7 +44,7 @@ if choose_new_car:
 st.write('Here are your options with a split by price, condition and model of the vehicle')
 
 fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", hover_name="model",
-                 log_x=True, price='pop')
+                 log_x=True, size='model_year')
 st.plotly_chart(fig, theme="streamlit")
 
 st.write('Distribution of vehicles by fuel type')
