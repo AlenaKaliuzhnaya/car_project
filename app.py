@@ -17,6 +17,12 @@ img = Image.open("machineswithsouls.jpg")
 
 st.image(img)
 
+columns_to_replace = ['paint_color']
+
+for column in columns_to_replace:
+    print(column)
+    data[column] = data[column].fillna('unknown')
+
 st.caption('Choose your parameters here')
 min_price = int(data['price'].min())
 max_price = int(data['price'].max())
