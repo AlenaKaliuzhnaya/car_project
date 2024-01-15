@@ -19,10 +19,12 @@ img = Image.open("machineswithsouls.jpg")
 st.image(img)
 
 st.caption(':red[Choose your parameters here]')
+min_price = data['price'].min()
+max_price = data['price'].max()
 
 price_range = st.slider(
     "What is your price range?",
-    value=(1.000000, 375000.000000))
+    value=(int(min_price), int(max_price)))
 
 # actual_range=list(range(price_range[0],price_range[1]+1))
 actual_range = list(range(int(price_range[0]), int(price_range[1]) + 1))
