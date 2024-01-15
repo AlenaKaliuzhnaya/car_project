@@ -45,7 +45,7 @@ fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", ho
 for i, row in avg_prices.iterrows():
     fig.add_annotation(x=row['model_year'], y=row['price'],
                        text=f'Average Price: ${row["price"]:.2f}',
-                       showarrow=True, arrowhead=2, arrowcolor='red', arrowwidth=2, arrowhead=4)
+                       showarrow=True, arrowhead=2, arrowcolor='red', arrowwidth=2)
 
 st.plotly_chart(fig, theme="plotly_dark")
 
