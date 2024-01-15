@@ -47,8 +47,11 @@ fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", ho
                  log_x=True, size='price')
 st.plotly_chart(fig, theme="streamlit")
 
+
 st.write('Distribution of vehicles by fuel type')
-fig2 = px.histogram(filtered_data, x="fuel", y="price", labels={"price": "Percent"})
+filtered_data['price_percentage'] = (filtered_data.groupby('fuel')['price'].transform('sum') / filtered_data['price']
+                                     .sum()) * 100
+fig2 = px.bar(filtered_data, x="fuel", y="price_percentage", labels={"price_percentage": "Percent"})
 st.plotly_chart(fig2)
 
 st.write('Here are your options with a split by price, condition and model')
