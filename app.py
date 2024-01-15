@@ -39,9 +39,9 @@ choose_new_car = st.checkbox('Show only new vehicles')
 if choose_new_car:
     filtered_data = filtered_data[data.condition == 'new']
 
-st.write('Here are your options with a split by price, condition  and model of the vehicle')
+st.write('Here are your options with a split by price, condition and model of the vehicle')
 
-fig = px.scatter(filtered_data, x="model", y="price", color="condition", hover_name="model", log_x=True,
+fig = px.scatter(px.filtered_data.gapminder(), x="model", y="price", color="condition", hover_name="model", log_x=True,
                  size_max=60)
 st.plotly_chart(fig)
 
