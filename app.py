@@ -87,4 +87,4 @@ fig2 = px.bar(x=model_counts.index, y=model_counts.values, labels={'x': 'Car Mod
 st.plotly_chart(fig2)
 
 st.write('Here is the list of recommended vehicles')
-st.dataframe(filtered_data.sample(40))
+st.dataframe(filtered_data.sample())
