@@ -6,10 +6,6 @@ import urllib.request
 from PIL import Image
 
 data = pd.read_csv('vehicles_us.csv')
-data = data.drop_duplicates(subset=['model'])
-
-# Resetting the index after removing duplicates
-data = data.reset_index(drop=True)
 
 st.header('Choose your car!')
 st.subheader('Use this app to select vehicle based on your preferences ')
@@ -31,9 +27,11 @@ price_range = st.slider(
 # actual_range=list(range(price_range[0],price_range[1]+1))
 actual_range = list(range(int(price_range[0]), int(price_range[1]) + 1))
 
+filtered_data = data[(data['price'] >= price_range[0]) & (data['price'] <= price_range[1])]
+
 car_models = st.multiselect(
     'Choose models of vehicle that you prefer',
-    options=data['model'])
+    options=filtered_data['model'])
 
 
 choose_new_car = st.checkbox('Show only new vehicles')
