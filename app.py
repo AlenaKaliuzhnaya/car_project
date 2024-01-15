@@ -34,7 +34,7 @@ choose_new_car = st.checkbox('Show only new vehicles')
 if choose_new_car:
     filtered_data = filtered_data[data.condition == 'new']
 
-st.write('Here are your options with a split by price, condition and model of the vehicle')
+st.write('Model year VS price and condition\n Here you can choose vehicle condition based on model year and price')
 
 fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", hover_name="model",
                  log_x=True, size='price')
