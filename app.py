@@ -41,7 +41,8 @@ if choose_new_car:
 
 st.write('Here are your options with a split by price, condition and model of the vehicle')
 
-fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", hover_name="model", log_x=True, size='pop')
+fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", hover_name="model",
+                 log_x=True, price='pop')
 st.plotly_chart(fig, theme="streamlit")
 
 st.write('Distribution of vehicles by fuel type')
