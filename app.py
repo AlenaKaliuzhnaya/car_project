@@ -3,7 +3,7 @@ import streamlit as st
 import plotly.express as px
 import altair as alt
 
-data = pd.read_csv('vehicles_us.csv')
+data = pd.read_csv('vehicles_us.csv').drop_duplicates()
 
 st.header('Choose your car!')
 st.subheader('Use this app to select vehicle based on your preferences ')
