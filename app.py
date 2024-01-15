@@ -28,9 +28,11 @@ price_range = st.slider(
 # actual_range=list(range(price_range[0],price_range[1]+1))
 actual_range = list(range(int(price_range[0]), int(price_range[1]) + 1))
 
+options = data['model']
+
 car_models = st.multiselect(
     'Choose models of vehicle that you prefer',
-    options=data['model'])
+    options=options[len(options)])
 
 choose_new_car = st.checkbox('Show only new vehicles')
 
