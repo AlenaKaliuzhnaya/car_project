@@ -52,6 +52,10 @@ filtered_data['count_percentage'] = (filtered_data.groupby('fuel')['fuel'].trans
                                      .count()) * 100
 
 fig2 = px.bar(filtered_data, x="fuel", y="count_percentage", labels={"count_percentage": "Percent"})
+# Convert y-axis values to percentage format
+fig2.update_traces(yaxis="y2")
+fig2.update_layout(yaxis2_tickformat="%", yaxis2=dict(title="Percent"))
+
 st.plotly_chart(fig2)
 
 st.write('Here is the list of recommended vehicles')
