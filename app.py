@@ -41,8 +41,8 @@ fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", ho
 st.plotly_chart(fig, theme="streamlit")
 
 st.write('Distribution of vehicles by fuel type')
-fig2 = px.histogram(filtered_data, x="fuel")
-avg_price = filtered_data['fuel'].mean()
+fig2 = px.histogram(filtered_data, x="fuel", y="price")
+avg_price = filtered_data['price'].mean()
 st.plotly_chart(fig2)
 
 total_count_per_fuel = filtered_data['fuel'].value_counts()
