@@ -17,7 +17,7 @@ img = Image.open("machineswithsouls.jpg")
 
 st.image(img)
 
-st.caption(':read[Choose your parameters here]')
+st.caption(':red[Choose your parameters here]')
 min_price = int(data['price'].min())
 max_price = int(data['price'].max())
 
