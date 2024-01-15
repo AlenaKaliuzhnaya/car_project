@@ -17,7 +17,7 @@ img = Image.open("machineswithsouls.jpg")
 
 st.image(img)
 
-st.caption('[Choose your parameters here]')
+st.caption(':read[Choose your parameters here]')
 min_price = int(data['price'].min())
 max_price = int(data['price'].max())
 
@@ -35,19 +35,10 @@ if choose_new_car:
     filtered_data = filtered_data[data.condition == 'new']
 
 st.write('Here are your options with a split by price, condition and model of the vehicle')
-# Calculate average price for each model_year
-avg_prices = filtered_data.groupby('model_year')['price'].mean().reset_index()
 
 fig = px.scatter(filtered_data, x="model_year", y="price", color="condition", hover_name="model",
-                 log_x=True, size='price', text='price')
-
-# Add custom text labels for average price
-for i, row in avg_prices.iterrows():
-    fig.add_annotation(x=row['model_year'], y=row['price'],
-                       text=f'Average Price: ${row["price"]:.2f}',
-                       showarrow=True, arrowhead=2, arrowcolor='red', arrowwidth=2)
-
-st.plotly_chart(fig, theme="plotly_dark")
+                 log_x=True, size='price')
+st.plotly_chart(fig, theme="streamlit")
 
 st.write('Distribution of vehicles by fuel type')
 
