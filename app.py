@@ -51,5 +51,10 @@ st.write('Distribution of vehicles by fuel type')
 fig2 = px.histogram(filtered_data, x="fuel", y="price")
 st.plotly_chart(fig2)
 
+st.write('Here are your options with a split by price, condition and model')
+manafacture_chart = st.bar_chart(
+   filtered_data, x="model", y="condition", color=["condition"]
+)
+
 st.write('Here is the list of recommended vehicles')
 st.dataframe(filtered_data.sample(40))
