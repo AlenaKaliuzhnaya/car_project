@@ -54,8 +54,7 @@ st.plotly_chart(fig2)
 st.write('Here are your options with a split by price, condition and model')
 
 fig3 = px.bar(
-   filtered_data, x="model", y="condition", color=["condition"]
-)
+   filtered_data, x="model", y="condition")
 st.plotly_chart(fig3)
 
 st.write('Here is the list of recommended vehicles')
