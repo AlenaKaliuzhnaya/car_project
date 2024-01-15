@@ -53,10 +53,10 @@ st.plotly_chart(fig2)
 
 st.write('Here are your options with a split by price, condition and model')
 
-manafacture_chart = px.bar_chart(
+fig3 = px.bar(
    filtered_data, x="model", y="condition", color=["condition"]
 )
-st.plotly_chart(manafacture_chart)
+st.plotly_chart(fig3)
 
 st.write('Here is the list of recommended vehicles')
 st.dataframe(filtered_data.sample(40))
