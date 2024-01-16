@@ -8,3 +8,7 @@ This Streamlit app allows users to choose a vehicle based on their preferences. 
 
    ```bash
    git clone https://github.com/AlenaKaliuzhnaya/car_project.git
+
+## Link to my app
+
+   https://lecture-8-lfdt.onrender.com/
