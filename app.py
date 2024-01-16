@@ -17,33 +17,6 @@ img = Image.open("machineswithsouls.jpg")
 
 st.image(img)
 
-# columns_to_replace = ['paint_color']
-
-# for column in columns_to_replace:
-#     print(column)
-#     data[column] = data[column].fillna('unknown')
-    
-# column_to_replace = ['is_4wd']
-
-# for column in column_to_replace:
-#     print(column)
-#     data[column] = data[column].fillna('0')
-    
-    
-# data['model_year'] = data['model_year'].fillna(data.groupby(['model'])['model_year'].transform('median'))
-# data['odometer'] = data['odometer'].fillna(data.groupby(['model'])['odometer'].transform('median'))
-# data['odometer'] = data['odometer'].fillna(data.groupby(['model_year'])['odometer'].transform('median'))
-# data['cylinders'] = data['cylinders'].fillna(data.groupby(['model'])['cylinders'].transform('median'))
-
-
-# def replace_wrong_models(wrong_models, correct_models):
-#     for element in wrong_models:
-#         data['model'] = data['model'].replace(element, correct_models)    
-        
-# replace_wrong_models(['ford f-250 sd', 'ford f250 super duty'], 'ford f-250 super duty')
-# replace_wrong_models(['ford f150', 'fford f-150'], 'ford f-150')
-# replace_wrong_models(['ford f250'], 'ford f-250')
-# replace_wrong_models(['ford f350 super duty', 'ford f-350 sd'], 'ford f-350 super duty')
 
 st.caption('Choose your parameters here')
 min_price = int(data['price'].min())
